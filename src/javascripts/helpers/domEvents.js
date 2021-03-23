@@ -1,24 +1,25 @@
-import getSetupJokeButton from '../components/buttons/getJokeButton';
+import getNewJoke from '../components/buttons/getNewJokeButton';
 import getPunchlineButton from '../components/buttons/getPunchlineButton';
-import getRandomProgrammingJoke from './data/jokeData';
+import { getJoke, giveJokePunchline, giveJokeSetup } from './getJoke';
 
 const domEvents = () => {
-  let jokeObject = [];
   $('body').on('click', (e) => {
     console.warn(e.target.id);
     if (e.target.id.includes('get-joke-btn')) {
-      jokeObject = [];
       $('.joke-text').empty();
-      getRandomProgrammingJoke().then((response) => {
-        jokeObject.push(response[0]);
-        $('#joke-setup-container').html(jokeObject[0].setup);
-        getPunchlineButton('GET PUNCHLINE');
-      });
+      $('#joke-setup-container').html(giveJokeSetup());
+      getPunchlineButton('GET PUNCHLINE');
     }
+
     if (e.target.id.includes('get-setup-joke-btn')) {
-      console.warn(jokeObject);
-      $('#joke-punchline-container').html(jokeObject[0].punchline);
-      getSetupJokeButton('GET ANOTHER JOKE');
+      $('#joke-punchline-container').html(giveJokePunchline());
+      getNewJoke('GET ANOTHER JOKE');
+    }
+    if (e.target.id.includes('get-new-joke-btn')) {
+      $('.joke-text').empty();
+      getJoke();
+      $('#joke-setup-container').html(giveJokeSetup());
+      getPunchlineButton('GET PUNCHLINE');
     }
   });
 };
