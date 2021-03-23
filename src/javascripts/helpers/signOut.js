@@ -1,8 +1,8 @@
-import firebase from 'firebase/app';
-import 'firebase/auth';
+// import firebase from 'firebase/app';
+// import 'firebase/auth';
 
-const signOut = () => {
-  firebase.auth().signOut();
-};
+// const signOut = () => {
+//   firebase.auth().signOut();
+// };
 
-export default signOut;
+// export default signOut;
