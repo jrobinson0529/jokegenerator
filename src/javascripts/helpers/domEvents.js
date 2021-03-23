@@ -1,4 +1,4 @@
-import getNewJoke from '../components/buttons/getNewJokeButton';
+import getSetupJokeButton from '../components/buttons/getJokeButton';
 import getPunchlineButton from '../components/buttons/getPunchlineButton';
 import { getJoke, giveJokePunchline, giveJokeSetup } from './getJoke';
 
@@ -13,13 +13,8 @@ const domEvents = () => {
 
     if (e.target.id.includes('get-setup-joke-btn')) {
       $('#joke-punchline-container').html(giveJokePunchline());
-      getNewJoke('GET ANOTHER JOKE');
-    }
-    if (e.target.id.includes('get-new-joke-btn')) {
-      $('.joke-text').empty();
+      getSetupJokeButton('GET NEW JOKE');
       getJoke();
-      $('#joke-setup-container').html(giveJokeSetup());
-      getPunchlineButton('GET PUNCHLINE');
     }
   });
 };
